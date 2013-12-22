@@ -1,11 +1,16 @@
 language: ruby
 rvm:
-- 1.9.3
+  - 1.9.3
+before_script:
+  - git config --global user.email "dsampy@gmail.com"
+  - git config --global user.name "Travis-CI"
+after_script:
+  - git config credential.helper "store --file=.git/credentials"
+  - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+  - rake travis
 branches:
   only:
-  - master
-script: rake travis
+    - master
 env:
   global:
-  - secure: cwBVk1dpyY2EpeQL2C8LB8BM2H3CYBQueAW2VNUCp1XKnJ5cmiHGLelAtv2CVHNvNvt4CJa2viIeQ7HaCbq1erw2zkGoBHT1C420UR7SHPLKvKYzPy5Zy2+UAH6229llUT144tVMBmjGJkwnMyCikAtozw0rAUEjuZPdcpV0YHs=
-  - secure: cSz1+6ImJIvrnGpADpMA6IxoK4IdRgtovPmnQCX9rXeI0NJhohtYEgYA1MGrw5VmBlEcXcT4RIh+xQINqFKfk24ISoXJOTtavcSyeBJ7RgazddQdC0D8o/681mZ2bIbg0rS3yA5yHRMnfU5tt4fydT8WtJb4Oo4UL9YH6D5VCgc=
+    - secure: f9U/7wsoE3Q1XozGuGvwlVE1AZA+ZYGGrAw6HVElbEGNGSYOs3c+BzM/YhCoTvrGyvT/rvbEK6dm3N/YJDw9HiZHxKtQqdJyW9PIf98l7kB7GYaWKx+4Y/tskKiwGuh2m/UBPAa1Rve54nNO8eAA3UCmshlLGgDDOb4ziV12G0w=
