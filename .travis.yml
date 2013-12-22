@@ -6,7 +6,7 @@ before_script:
 - git config --global user.name "Travis-CI"
 script:
 - git config credential.helper "store --file=.git/credentials"
-- echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+- echo "https://dsampy:${GH_TOKEN}:@github.com" > .git/credentials
 - rake travis
 branches:
   only:
