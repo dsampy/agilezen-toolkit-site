@@ -4,7 +4,7 @@ rvm:
 before_script:
   - git config --global user.email "dsampy@gmail.com"
   - git config --global user.name "Travis-CI"
-after_script:
+script:
   - git config credential.helper "store --file=.git/credentials"
   - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
   - rake travis
